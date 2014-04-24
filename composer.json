@@ -1,0 +1,24 @@
+{
+    "name": "multoo/shipping",
+    "homepage": "https://repository.multoo.nl/svn/Multoo/Packages/Shipping",
+    "description": "Multoo Shipping package",
+    "keywords": ["Shipping", "DHL", "UPS"],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Alex Damen",
+            "email": "alex@multoo.nl",
+            "role": "Creator / Main Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "rdlowrey/auryn": "~0.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Multoo\\Shipping\\": "src/"
+        }
+
+    }
+}
