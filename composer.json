@@ -1,9 +1,9 @@
 {
     "name": "multoo/shipping",
-    "homepage": "https://repository.multoo.nl/svn/Multoo/Packages/Shipping",
+    "homepage": "https://github.com/Multoo/Shipping",
     "description": "Multoo Shipping package",
     "keywords": ["Shipping", "DHL", "UPS"],
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Alex Damen",
