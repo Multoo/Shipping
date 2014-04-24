@@ -2,3 +2,6 @@
 vendor
 composer.lock
 nbproject
+build/coverage
+build/logs
+build/pdepend
