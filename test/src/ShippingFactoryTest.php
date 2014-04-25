@@ -12,17 +12,13 @@ class ShippingFactoryTest extends \PHPUnit_Framework_TestCase
      * @var ShippingFactory
      */
     protected $object;
-    protected $injectorMock;
 
     /**
      * @covers Multoo\Shipping\ShippingFactory::__construct
      */
     protected function setUp()
     {
-        $this->injectorMock = $this->getMockBuilder('Auryn\Provider')
-            ->disableOriginalConstructor()
-            ->getMock();
-        $this->object = new ShippingFactory($this->injectorMock);
+        $this->object = new ShippingFactory();
     }
 
     protected function tearDown()
@@ -35,14 +31,7 @@ class ShippingFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreate()
     {
-        $batchObject = new \StdClass();
-
-        $this->injectorMock->expects($this->once())
-            ->method('make')
-            ->will($this->returnValue($batchObject));
-
         $result = $this->object->create();
-
-        $this->assertEquals($batchObject, $result);
+        $this->assertInstanceOf('\Multoo\Shipping\Batch', $result);
     }
 }

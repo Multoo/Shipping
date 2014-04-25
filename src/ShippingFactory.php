@@ -7,22 +7,13 @@ class ShippingFactory
 
     /**
      *
-     * @var \Auryn\Provider
+     * @var \Multoo\Shipping\Provider\ProviderFactory
      */
-    protected $injector;
+    protected $providerFactory;
 
-    /**
-     * 
-     * @param \Auryn\Provider $injector
-     */
-    public function __construct(\Auryn\Provider $injector)
+    public function __construct()
     {
-        $this->injector = $injector;
-
-        // niet de mooiste oplossing maar anders worden elke keer alle services
-        // opnieuw gemaakt dit kan op termijn op overzichts pagina's nogal uit
-        // de hand lopen.
-        $injector->share($this);
+        $this->providerFactory = new \Multoo\Shipping\Provider\ProviderFactory();
     }
 
     /**
@@ -31,6 +22,6 @@ class ShippingFactory
      */
     public function create()
     {
-        return $this->injector->make('\\Multoo\\Shipping\\Batch');
+        return new \Multoo\Shipping\Batch($this->providerFactory);
     }
 }
