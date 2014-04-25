@@ -12,17 +12,10 @@ class ProviderFactoryTest extends \PHPUnit_Framework_TestCase
      * @var ProviderFactory
      */
     protected $object;
-    protected $injectorMock;
 
-    /**
-     * @covers Multoo\Shipping\Provider\ProviderFactory::__construct
-     */
     protected function setUp()
     {
-        $this->injectorMock = $this->getMockBuilder('Auryn\Provider')
-            ->disableOriginalConstructor()
-            ->getMock();
-        $this->object = new ProviderFactory($this->injectorMock);
+        $this->object = new ProviderFactory();
     }
 
     protected function tearDown()
@@ -33,18 +26,22 @@ class ProviderFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers Multoo\Shipping\Provider\ProviderFactory::create
      */
-    public function testCreate()
+    public function testCreateUps()
     {
-        $provider = "Tested";
-        $providerObject = new \StdClass();
 
-        $this->injectorMock->expects($this->once())
-            ->method('make')
-            ->with('\\Multoo\\Shipping\\Provider\\' . $provider)
-            ->will($this->returnValue($providerObject));
+        $result = $this->object->create('ups');
+        $this->assertInstanceOf('\Multoo\Shipping\Provider\Ups', $result);
 
-        $result = $this->object->create($provider);
+    }
+    
+    /**
+     * @covers Multoo\Shipping\Provider\ProviderFactory::create
+     */
+    public function testCreateDhl()
+    {
 
-        $this->assertEquals($providerObject, $result);
+        $result = $this->object->create('dhl');
+        $this->assertInstanceOf('\Multoo\Shipping\Provider\Dhl', $result);
+
     }
 }
