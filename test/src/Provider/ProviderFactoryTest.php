@@ -13,9 +13,6 @@ class ProviderFactoryTest extends \PHPUnit_Framework_TestCase
      */
     protected $object;
 
-    /**
-     * @covers Multoo\Shipping\Provider\ProviderFactory::__construct
-     */
     protected function setUp()
     {
         $this->object = new ProviderFactory();
